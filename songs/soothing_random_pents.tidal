@@ -1,0 +1,45 @@
+setcps (120/60/4)
+
+d1
+  $ sound "bd:1*4"
+  # gain 1.1
+  # orbit 0
+
+d2
+  $ (choose [1/4, 2/4, 3/4, 4/4] <~)
+  $ fast 2
+  $ sound (innerJoin $ choose ["[hh*4]", "[[hh hh] hh hh hh]"])
+  # gain "1.0 0.9 0.8 0.9"
+  # orbit 0
+
+d4
+  $ slow (choose [0.5, 1.5, 1, 2])
+  $ sound "supervibe*4"
+  # midinote (choose [60, 62, 64, 67, 69])
+  # lpf 1000
+  # room 0.9
+  # gain 0.7
+  # release 4
+  # pan (rand)
+  # orbit 1
+
+d5
+  $ slow 2
+  $ midinote (innerJoin $ choose ["<60, 69>", "<62, 67>", "<64, 60>", "<64, 69>"])
+  |< s "superhammond"
+  # lpf 400
+  # release 14
+  # velocity 1
+  # gain 0.8
+  # orbit 0
+
+d6
+  $ degradeBy 0.5
+  $ slow 2
+  $ s "sarer"
+  # n (irand 7)
+  # cut 6
+  # gain 1.4
+  # orbit 0
+
+hush
